@@ -12,6 +12,14 @@ public class SpringConfiguration {
   @Bean
   public SecurityFilterChain configure(HttpSecurity chainBuilder) throws Exception {
     chainBuilder
+        .authorizeHttpRequests(configure -> {
+          try {
+            configure.antMatchers("/api/**").permitAll().and().csrf().disable();
+          } catch (Exception e) {
+            System.err.println("SecurityFilterChain configuration error");
+          }
+        });
+    chainBuilder
         .authorizeHttpRequests(configure -> configure.anyRequest().authenticated())
         .oauth2Login(Customizer.withDefaults());
     return chainBuilder.build();

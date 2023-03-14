@@ -20,5 +20,6 @@ public class ArchUnitTest {
       .domainServices("..domain.service..")
       .applicationServices("..application..")
       .adapter("persistence", "..persistence..")
-      .adapter("web", "..web..");
+      .adapter("web", "..web..")
+      .adapter("rest", "..rest..");
 }

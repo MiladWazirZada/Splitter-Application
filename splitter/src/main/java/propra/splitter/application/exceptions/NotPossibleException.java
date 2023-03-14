@@ -2,8 +2,11 @@ package propra.splitter.application.exceptions;
 
 public class NotPossibleException extends RuntimeException {
 
-  private final long id;
-  private final String user;
+  private long id;
+  private String user;
+
+  public NotPossibleException() {
+  }
 
   public NotPossibleException(long id, String user) {
     this.id = id;

@@ -21,7 +21,7 @@ import propra.splitter.application.Gruppen;
 import propra.splitter.domain.model.Gruppe;
 import propra.splitter.web.helper.WithMockOAuth2User;
 
-@WebMvcTest
+@WebMvcTest(controllers = MainController.class)
 public class MainControllerTest {
 
   @Autowired

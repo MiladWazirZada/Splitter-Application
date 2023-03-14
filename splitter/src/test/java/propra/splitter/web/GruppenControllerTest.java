@@ -28,7 +28,7 @@ import propra.splitter.web.displayentities.DisplayAusgabe;
 import propra.splitter.web.displayentities.DisplayGruppe;
 import propra.splitter.web.helper.WithMockOAuth2User;
 
-@WebMvcTest
+@WebMvcTest(controllers = GruppenController.class)
 public class GruppenControllerTest {
 
   @Autowired

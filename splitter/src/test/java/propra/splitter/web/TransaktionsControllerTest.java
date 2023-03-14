@@ -23,7 +23,7 @@ import propra.splitter.domain.model.Gruppe;
 import propra.splitter.web.displayentities.DisplayTransaktion;
 import propra.splitter.web.helper.WithMockOAuth2User;
 
-@WebMvcTest
+@WebMvcTest(controllers = TransaktionsController.class)
 @DisplayName("Der Controller ")
 public class TransaktionsControllerTest {
 

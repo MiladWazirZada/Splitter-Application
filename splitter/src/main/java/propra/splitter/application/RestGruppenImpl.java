@@ -3,6 +3,7 @@ package propra.splitter.application;
 import java.time.LocalDateTime;
 import java.util.Set;
 import org.springframework.stereotype.Service;
+import propra.splitter.application.exceptions.AlreadyClosedException;
 import propra.splitter.application.exceptions.NotPossibleException;
 import propra.splitter.domain.model.Ausgabe;
 import propra.splitter.domain.model.Gruppe;
@@ -28,7 +29,10 @@ public class RestGruppenImpl implements RestGruppen {
       Set<String> schuldner) {
     Gruppe gruppe = connection.getGruppe(id);
 
-    if (!gruppe.teilnehmer().containsAll(schuldner)) {
+    if (gruppe.geschlossen()) {
+      throw new AlreadyClosedException();
+    }
+    if (!gruppe.teilnehmer().containsAll(schuldner) && !gruppe.teilnehmer().contains(glaeubiger)) {
       throw new NotPossibleException();
     }
 

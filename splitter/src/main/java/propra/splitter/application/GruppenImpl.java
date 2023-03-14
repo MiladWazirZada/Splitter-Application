@@ -42,7 +42,7 @@ public class GruppenImpl implements Gruppen {
 
     authenticate(caller, gruppe);
     if (!gruppe.teilnehmer().containsAll(schuldner) || !gruppe.teilnehmer().contains(glaeubiger)) {
-      throw new NotPossibleException();
+      throw new NotPossibleException(id, caller);
     }
 
     Ausgabe ausgabe = new Ausgabe(grund, cents, glaeubiger, schuldner, LocalDateTime.now());
@@ -77,7 +77,7 @@ public class GruppenImpl implements Gruppen {
 
   private void authenticate(String caller, Gruppe gruppe) {
     if (gruppe.geschlossen()) {
-      throw new AlreadyClosedException();
+      throw new AlreadyClosedException(gruppe.id(), caller);
     }
     if (!gruppe.teilnehmer().contains(caller)) {
       throw new NotAllowedException();

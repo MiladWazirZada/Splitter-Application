@@ -2,6 +2,7 @@ package propra.splitter.domain.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import propra.splitter.domain.model.transaktionsrechner.TransaktionsRechner;
 
 public record Gruppe(Long id, String name, Set<String> teilnehmer, Set<Ausgabe> ausgaben,
                      boolean geschlossen) {
@@ -49,5 +50,9 @@ public record Gruppe(Long id, String name, Set<String> teilnehmer, Set<Ausgabe> 
 
   public boolean hatTeilnehmer(String teilnehmer) {
     return this.teilnehmer.contains(teilnehmer);
+  }
+
+  public Set<Transaktion> berechneTransaktionen() {
+    return TransaktionsRechner.rechne(ausgaben);
   }
 }

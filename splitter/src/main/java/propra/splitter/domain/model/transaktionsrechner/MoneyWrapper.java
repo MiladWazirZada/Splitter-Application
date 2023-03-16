@@ -1,4 +1,4 @@
-package propra.splitter.domain.service;
+package propra.splitter.domain.model.transaktionsrechner;
 
 import java.math.BigDecimal;
 import java.util.Collection;

@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +17,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import propra.splitter.application.Gruppen;
-import propra.splitter.domain.model.Ausgabe;
 import propra.splitter.domain.model.Gruppe;
+import propra.splitter.domain.model.Transaktion;
 import propra.splitter.web.displayentities.DisplayTransaktion;
 import propra.splitter.web.helper.WithMockOAuth2User;
 
@@ -69,21 +68,21 @@ public class TransaktionsControllerTest {
     when(group.id()).thenReturn(1L);
     when(gruppen.getGruppe("A", 1L)).thenReturn(group);
 
-    DisplayTransaktion t1 = new DisplayTransaktion("B", "A", "300.00 €");
-    DisplayTransaktion t2 = new DisplayTransaktion("C", "A", "300.00 €");
-    DisplayTransaktion t3 = new DisplayTransaktion("E", "D", "50.00 €");
+    DisplayTransaktion dt1 = new DisplayTransaktion("B", "A", "300.00 €");
+    DisplayTransaktion dt2 = new DisplayTransaktion("C", "A", "300.00 €");
+    DisplayTransaktion dt3 = new DisplayTransaktion("E", "D", "50.00 €");
 
-    Ausgabe a1 = new Ausgabe("", 60000, "A", Set.of("B", "C"), LocalDateTime.MAX);
-    Ausgabe a2 = new Ausgabe("", 5000, "D", Set.of("E"), LocalDateTime.MAX);
-    Set<Ausgabe> ausgaben = Set.of(a1, a2);
+    Transaktion t1 = new Transaktion("B", "A", 30000);
+    Transaktion t2 = new Transaktion("C", "A", 30000);
+    Transaktion t3 = new Transaktion("E", "D", 5000);
 
-    when(gruppen.getGruppe("A", 1L).ausgaben()).thenReturn(ausgaben);
+    when(group.berechneTransaktionen()).thenReturn(Set.of(t1, t2, t3));
 
     //Act
     mvc.perform(get("/gruppen/1/transaktionen"))
 
         //Assert
-        .andExpect(model().attribute("glaeubiger_transaktionen", Set.of(t1, t2)))
-        .andExpect(model().attribute("andere_transaktionen", Set.of(t3)));
+        .andExpect(model().attribute("glaeubiger_transaktionen", Set.of(dt1, dt2)))
+        .andExpect(model().attribute("andere_transaktionen", Set.of(dt3)));
   }
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import propra.splitter.application.Gruppen;
 import propra.splitter.domain.model.Gruppe;
-import propra.splitter.domain.service.TransaktionsRechner;
 import propra.splitter.web.displayentities.DisplayTransaktion;
 
 @Controller
@@ -46,7 +45,7 @@ public class TransaktionsController {
     Gruppe gruppe = groups.getGruppe(user, id);
 
     Set<DisplayTransaktion> displayTransaktionen =
-        Adapter.toDisplayTransaktionen(TransaktionsRechner.rechne(gruppe.ausgaben()));
+        Adapter.toDisplayTransaktionen(gruppe.berechneTransaktionen());
     Map<TransaktionsStatus, Set<DisplayTransaktion>> geteilteTransaktionen =
         displayTransaktionen.stream().collect(
             Collectors.groupingBy(t -> TransaktionsStatus.ist(t, user), Collectors.toSet()));

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import propra.splitter.application.RestGruppen;
 import propra.splitter.domain.model.Gruppe;
 import propra.splitter.domain.model.Transaktion;
-import propra.splitter.domain.service.TransaktionsRechner;
 import propra.splitter.rest.requestentities.NeueAusgabeRequestEntity;
 import propra.splitter.rest.requestentities.NeueGruppeRequestEntity;
 
@@ -47,7 +46,7 @@ public class RestApiController {
   @GetMapping("/gruppen/{id}/ausgleich")
   Object getAusgleich(@PathVariable Long id) {
     Gruppe gruppe = this.restGruppen.getGruppe(id);
-    Set<Transaktion> transaktionen = TransaktionsRechner.rechne(gruppe.ausgaben());
+    Set<Transaktion> transaktionen = gruppe.berechneTransaktionen();
     return Adapter.toJsonAusgleichszahlungen(transaktionen);
   }
 

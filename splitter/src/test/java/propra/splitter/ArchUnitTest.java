@@ -16,6 +16,7 @@ public class ArchUnitTest {
   @ArchTest
   @SuppressFBWarnings("UrF")
   static final ArchRule onionArch = onionArchitecture()
+      .withOptionalLayers(true)
       .domainModels("..domain.model..")
       .domainServices("..domain.service..")
       .applicationServices("..application..")

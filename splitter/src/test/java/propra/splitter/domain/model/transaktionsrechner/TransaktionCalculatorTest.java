@@ -1,4 +1,4 @@
-package propra.splitter.domain.service;
+package propra.splitter.domain.model.transaktionsrechner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -12,6 +12,10 @@ ifdef::env-github[]
 :stem: latexmath
 endif::[]
 
+== Geklontes Projekt aus dem Modul "Programmier-Praktikum 2"
+
+Das Ziel ist die Entwicklung einer Anwendung unter Verwendung von Java (Spring Boot), PostgreSQL und REST-APIs im Rahmen der Onion-Architektur.
+
 == Einführung in die Problemstellung
 
 „Bei Geld hört die Freundschaft auf” heißt es. Rund um das Geld entstehen oft Probleme zwischen Menschen. Wir wollen uns des Themas annehmen und für Gruppen von Personen, die gemeinsame Ausgaben tätigen (zum Beispiel Wohngemeinschaften und Reisegruppen), eine Software schreiben, mit deren Hilfe die Ausgaben transparent aufgeschlüsselt und die Konten möglichst einfach ausgeglichen werden können. 
@@ -91,5 +95,6 @@ IMPORTANT: Nicht jedes Muster muss auftauchen!
 * Zur automatischen Überprüfung von Architekturregeln, die Sie explizit selber wählen, oder implizit aus den Vorgaben folgen, müssen Sie ArchUnit verwenden. Einige Beispiele: 
 ** Einhaltung des Architekturmusters 
 ** Zugriff auf Entitäten innerhalb eines Aggregats erfolgt korrekt
+* Der Produktivcode muss nach den Regeln des Google-Styleguide geschrieben werden. Ausnahme: Es müssen keine JavaDocs geschrieben werden. Bei Testmethoden dürfen Sie außerdem die Namenskonventionen außer Acht lassen.
 
 TIPP: Eigene Annotationen können helfen, die Tests zu schreiben

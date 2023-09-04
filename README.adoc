@@ -14,7 +14,7 @@ endif::[]
 
 == Geklontes Projekt aus dem Modul "Programmier-Praktikum 2"
 
-Das Ziel ist die Entwicklung einer Anwendung unter Verwendung von Java (Spring Boot), PostgreSQL und REST-APIs im Rahmen der Onion-Architektur.
+Das Ziel ist die Entwicklung einer Anwendung unter Verwendung von Java (Spring Boot), PostgreSQL und REST-APIs im Rahmen der Onion-Architektur. Hier
 
 == Einführung in die Problemstellung
 
